@@ -17,7 +17,6 @@ describe('Fetch Bills By Paid Status Service', () => {
       due_date: new Date(),
       name: 'Test Bill',
       user_id: 'user_id',
-      wasPaid: false,
     })
 
     for (let i = 0; i <= 3; i++) {
@@ -46,7 +45,6 @@ describe('Fetch Bills By Paid Status Service', () => {
       due_date: new Date(),
       name: 'Test Bill',
       user_id: 'user_id',
-      wasPaid: false,
     })
 
     for (let i = 0; i <= 3; i++) {
