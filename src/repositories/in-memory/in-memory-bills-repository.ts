@@ -20,4 +20,12 @@ export class InMemoryBillsRepository implements BillRepository {
 
     return bill
   }
+
+  async findByBillCode(billCode: string) {
+    const bill = this.bills.find((bill) => bill.bill_code === billCode)
+
+    if (!bill) return null
+
+    return bill
+  }
 }

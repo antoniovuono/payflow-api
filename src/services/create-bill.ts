@@ -1,5 +1,6 @@
 import { BillRepository } from '@/repositories/bill-repository'
 import { Bill } from '@prisma/client'
+import { ResourceAlreadyExistsError } from './errors/resource-already-exists'
 
 interface CreateBillServiceRequest {
   name: string
@@ -23,6 +24,10 @@ export class CreateBillService {
     billCode,
     userId,
   }: CreateBillServiceRequest): Promise<CreateBillServiceResponse> {
+    const billAlreadyExist = await this.billRepository.findByBillCode(billCode)
+
+    if (billAlreadyExist) throw new ResourceAlreadyExistsError()
+
     const bill = await this.billRepository.create({
       name,
       due_date: dueDate,
