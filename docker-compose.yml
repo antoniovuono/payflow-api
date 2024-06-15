@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  payflow-postgres:
+    image: "bitnami/postgresql:latest"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRESQL_USERNAME=payflow-admin
+      - POSTGRESQL_PASSWORD=payflow-admin
+      - POSTGRESQL_DATABASE=payflow
