@@ -13,6 +13,7 @@ export class InMemoryBillsRepository implements BillRepository {
       amount: data.amount,
       bill_code: data.bill_code,
       user_id: data.user_id,
+      wasPaid: data.wasPaid ?? false,
       created_at: new Date(),
     }
 
@@ -27,5 +28,11 @@ export class InMemoryBillsRepository implements BillRepository {
     if (!bill) return null
 
     return bill
+  }
+
+  async findMany(userId: string) {
+    const bills = this.bills.filter((bill) => bill.user_id === userId)
+
+    return bills
   }
 }

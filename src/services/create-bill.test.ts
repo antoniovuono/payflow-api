@@ -24,12 +24,12 @@ describe('Create Bill Service', () => {
   })
 
   it('should not be able to create a bill with the same bill code', async () => {
-    billRepository.create({
+    await createBillService.execute({
       name: 'Test Bill',
       amount: 100,
-      bill_code: '34191.79001 01043.510047 91020.150008 8 97480026000',
-      due_date: new Date(),
-      user_id: '',
+      billCode: '34191.79001 01043.510047 91020.150008 8 97480026000',
+      dueDate: new Date(),
+      userId: '',
     })
 
     await expect(() =>
