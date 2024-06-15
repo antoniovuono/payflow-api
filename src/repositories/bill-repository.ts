@@ -4,4 +4,5 @@ export interface BillRepository {
   create(data: Prisma.BillUncheckedCreateInput): Promise<Bill>
   findByBillCode(billCode: string): Promise<Bill | null>
   findMany(userId: string): Promise<Bill[]>
+  filterByPaidStatus(userId: string, paid: boolean): Promise<Bill[]>
 }

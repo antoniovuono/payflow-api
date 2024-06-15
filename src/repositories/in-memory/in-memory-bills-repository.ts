@@ -35,4 +35,12 @@ export class InMemoryBillsRepository implements BillRepository {
 
     return bills
   }
+
+  async filterByPaidStatus(userId: string, paid: boolean) {
+    const bills = this.bills.filter(
+      (bill) => bill.user_id === userId && bill.wasPaid === paid,
+    )
+
+    return bills
+  }
 }

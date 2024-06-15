@@ -6,7 +6,7 @@ let billRepository: InMemoryBillsRepository
 let createBillService: CreateBillService
 
 describe('Create Bill Service', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     billRepository = new InMemoryBillsRepository()
     createBillService = new CreateBillService(billRepository)
   })
