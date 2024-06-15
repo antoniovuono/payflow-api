@@ -19,6 +19,8 @@ model User {
   email      String
   created_at DateTime @default(now())
   Bill       Bill[]
+
+  @@map("users")
 }
 
 model Bill {
@@ -31,4 +33,6 @@ model Bill {
 
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
+
+  @@map("bills")
 }
