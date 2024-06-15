@@ -13,6 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  email      String
+  created_at DateTime @default(now())
+  Bill       Bill[]
+}
+
 model Bill {
   id         String   @id @default(uuid())
   name       String
@@ -20,4 +28,7 @@ model Bill {
   amount     Float
   bill_code  String
   created_at DateTime @default(now())
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
 }
